@@ -12,7 +12,7 @@ public class Story {
     public static void Openning() {
         System.out.println(""
                 + "※このゲームではフルスクリーンを推奨しています。\n"
-                + "※最大化、あるいはF11キーでフルスクリーンにすることで、よりゲームを楽しめます。"
+                + "※最大化、あるいはF11キーでフルスクリーンにすることで、よりゲームを楽しめます。\n"
                 + "※また、文の最後に「▼」が表示されている場合、Enterキーで次に進みます。▼");
         scan.nextLine();
 
@@ -141,7 +141,7 @@ public class Story {
         scan.nextLine();
         System.out.println(""
                 + "今回の武器はナイフか。\n"
-                + "さあナイフと回復アイテムどちらを選ぶ？▼"+"(HP:"+Disaster.getHP() + ")");
+                + "さあナイフと回復アイテムどちらを選ぶ？▼" + "(HP:" + Disaster.getHP() + ")");
         scan.nextLine();
         System.out.println("1. " + weapon_knife.GetName() + ", 2. 回復アイテム");
     }
@@ -339,7 +339,7 @@ public class Story {
         scan.nextLine();
         System.out.println(""
                 + "愚問だったな。私達" + DisasterName + "には敵などいない。\n"
-                + "武器かアイテムを拾って先に進むぞ。▼"+"(HP:"+Disaster.getHP() + ")");
+                + "武器かアイテムを拾って先に進むぞ。▼" + "(HP:" + Disaster.getHP() + ")");
         scan.nextLine();
         System.out.println("1. " + weapon_theElderWand.GetName() + ", 2. 回復アイテム");
         if (TheDisaster.TwoChoices("1", "2").equals("1")) {
@@ -377,7 +377,7 @@ public class Story {
         scan.nextLine();
         System.out.println(""
                 + "どちらを取るかを決めるのはお前『決意』だ。\n"
-                + "" + DisasterName + "はどちらを選ぶ？▼"+"(HP:"+Disaster.getHP() + ")");
+                + "" + DisasterName + "はどちらを選ぶ？▼" + "(HP:" + Disaster.getHP() + ")");
         scan.nextLine();
         System.out.println("1. " + weapon_fryingPanOfMagic.GetName() + ", 2. 回復アイテム");
         if (TheDisaster.TwoChoices("1", "2").equals("1")) {
@@ -416,7 +416,7 @@ public class Story {
 
         System.out.println(""
                 + "" + DisasterName + "にとって大事だと思う方を選んで欲しい。\n"
-                + "どちらを取るかを決めるのはお前だ。▼"+"(HP:"+Disaster.getHP() + ")");
+                + "どちらを取るかを決めるのはお前だ。▼" + "(HP:" + Disaster.getHP() + ")");
         scan.nextLine();
         System.out.println("1. " + weapon_muskets.GetName() + ", 2. 回復アイテム");
         if (TheDisaster.TwoChoices("1", "2").equals("1")) {
@@ -522,7 +522,7 @@ public class Story {
         scan.nextLine();
         System.out.println(""
                 + "選択の時間だ。行くぞ。\n"
-                + "ここからが本番だ。▼"+"(HP:"+Disaster.getHP() + ")");
+                + "ここからが本番だ。▼" + "(HP:" + Disaster.getHP() + ")");
         scan.nextLine();
         System.out.println("1. " + weapon_waterGun.GetName() + ", 2. 回復アイテム");
         if (TheDisaster.TwoChoices("1", "2").equals("1")) {
@@ -842,28 +842,7 @@ public class Story {
                 + "２．ヴァルキリーの目的は？\n"
                 + "３．あんたは何者なのか？\n"
                 + "４．殺して欲しい");
-        boolean roop = false;
-        while (!roop) {
-        String sentakusi = scan.nextLine();
-        switch (sentakusi) {
-                case "1":
-                    Senpai1();
-                break;
-                case "2":
-                    Senpai2();
-                break;
-                case "3":
-                    Senpai3();
-                break;
-                case "4":
-                    Senpai4();
-                break;
-                defalt:
-                System.out.println("こんなのも選べないの？そんなんじゃ甘いよ")
-                    break;
     }
-                roop = true;
-}
 
     public static void Senpai1() {
         System.out.println(""
@@ -895,7 +874,7 @@ public class Story {
                 + "不確定な存在のあんたをよく利用しようと思ったよな。\n"
                 + "それにわざわざ使った兵士もポセイドンに寵愛されている海賊だしな。▼");
         scan.nextLine();
-System.out.println(""
+        System.out.println(""
                 + "かつてゼウスの息子に立ち向かった海賊たちだからといって\n"
                 + "無理あるよな…▼");
         scan.nextLine();
@@ -962,60 +941,61 @@ System.out.println(""
                 + "114514!!!▼");
         scan.nextLine();
     }
-    public static void SenpaiLast (){
+
+    public static void SenpaiLast() {
         System.out.println(""
                 + "ﾁｶﾚﾀ・・・（小声）\n"
                 + "まさかここまでやれるとはな…▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "ダメみたいですね（諦観）\n"
                 + "この辺にぃ▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "うまいラーメン屋の屋台、来てるらしいんすよ\n"
                 + "行きませんか？▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + ".....\n"
                 + "あ、無視…▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "これもうわかんねぇな\n"
                 + "まあどうせ王道を往く俺はこの程度じゃやられないんですけどね▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "まああんたがこのゲームをここまでやり込んだということは\n"
                 + "それだけこのゲームを愛してくれたということだ。▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "一つのことを最後までやり遂げるって気持ちいいよな。\n"
                 + "それを今、お前はやり遂げた。▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "その功績を認めて\n"
                 + "最後に俺の名前を教えよう。▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "\n"
                 + "『オルトリンド』▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "これが俺の本当の名前だ。\n"
                 + "既に信仰も薄れているし、知名度も高くない▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "この世界に存在するために\n"
                 + "最も有名なミームを騙らせてもらった。▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "いや騙るなんてレベルじゃないな\n"
                 + "もはや俺はあのミームがないと存在すら▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "忘れられる存在になってしまった。\n"
                 + "これで本当にこのゲームは終わりだ。▼");
         scan.nextLine();
-    System.out.println(""
+        System.out.println(""
                 + "\n"
                 + "じゃあな。▼");
         scan.nextLine();
