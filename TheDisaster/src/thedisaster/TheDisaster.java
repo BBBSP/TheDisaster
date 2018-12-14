@@ -1,6 +1,5 @@
 package thedisaster;
 
-import java.util.Random;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -49,6 +48,8 @@ public class TheDisaster {
     static boolean hasGotWeapon_waterGun = false;
     static boolean hasGotWeapon_killWeapon = false;
 
+    static boolean special810Route = false;
+
     static Scanner scan = new Scanner(System.in);
 
     static boolean isGameEnd = false;
@@ -64,6 +65,38 @@ public class TheDisaster {
         Story.Openning(); //オープニング
         PutDisasterName(); //名前決定
         DamageOverTime(); //HP減少開始
+
+        if (special810Route) {
+            Story.Senpai(); //810ルート序章
+            while (true) {
+                String sentakusi = scan.nextLine();
+                switch (sentakusi) {
+                    case "1":
+                        Story.Senpai1(); //選択肢1
+                        Disaster.SetHP(-1919361);
+                        break;
+                    case "2":
+                        Story.Senpai2(); //選択肢2
+                        Disaster.SetHP(-1919361);
+                        break;
+                    case "3":
+                        Story.Senpai3(); //選択肢2
+                        Disaster.SetHP(-1919361);
+                        break;
+                    case "4":
+                        Story.Senpai4(); //選択肢4
+                        EasyMass.hardMass(); //ハードマス
+                        Story.SenpaiLast(); //終わり
+                        isGameEnd = true;
+                        scan.close();
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("こんなのも選べないの？そんなんじゃ甘いよ");
+                        break;
+                }
+            }
+        }
 
         Story.Tutorial(); //チュートリアル
         Battle.BattleOfMessiah(enemies_tutorial); //チュートリアル戦
@@ -174,47 +207,12 @@ public class TheDisaster {
             System.out.println("災害(主人公)の名前を入力してください");
             DisasterName = scan.nextLine();
 
-            switch (DisasterName) {
-                case "エクスシア":
-                    System.out.println("\nお前に名を貸す義理も無ければ道理もない。\n");
-                    continue;
-                case "スローネ":
-                    System.out.println("\nその名を騙られるのは気乗りしないね。\n");
-                    continue;
-                case "マールート":
-                    System.out.println("\n残念、モウ先客ガ居ルノサ！\n");
-                    continue;
-                case "ハールート":
-                    System.out.println("\nお前にその名は似合わないんじゃないか？\n");
-                    continue;
-                case "アストライアー":
-                    System.out.println("\nハハッ、俺の名を知ってるとは光栄だね。\n");
-                    continue;
-                case "ラジエル":
-                    System.out.println("\nほぅ、よく覚えているものだな。\n");
-                    continue;
-                case "バーチュース":
-                    System.out.println("\n俺の名を騙ろうとするとは意外だね。\n");
-                    continue;
-                case "ガルム":
-                    System.out.println("\n名を覚えているのは誉めてやろう\n");
-                    continue;
-                case "グリムゲルデ":
-                    System.out.println("\n私の名前を騙るとはこの愚か者め\n");
-                    continue;
-                case "Star Dies":
-                    System.out.println("\n「8101919114514」\n"
-                            + "あなたは最も危険な名前を知った\n");
-                    continue;
-                case "オルトランド":
-                    System.out.println("\nまだこのゲームをやってくれるのか？\n");
-                    continue;
-                case "":
-                    System.out.println("\n名前を入力してください\n");
-                    continue;
-                case "8101919114514":
-                    Story.Senpai(); //エンディング
-                    continue;
+            if (nameCheck()) {
+                continue;
+            }
+
+            if (special810Route) {
+                break;
             }
 
             System.out.println(DisasterName + " でよろしいですか? (1. はい | 2. いいえ)");
@@ -224,6 +222,53 @@ public class TheDisaster {
             }
         }
         Disaster.SetName(DisasterName);
+    }
+
+    public static boolean nameCheck() {
+        switch (DisasterName) {
+            case "エクスシア":
+                System.out.println("\nお前に名を貸す義理も無ければ道理もない。\n");
+                return true;
+            case "スローネ":
+                System.out.println("\nその名を騙られるのは気乗りしないね。\n");
+                return true;
+            case "マールート":
+                System.out.println("\n残念、モウ先客ガ居ルノサ！\n");
+                return true;
+            case "ハールート":
+                System.out.println("\nお前にその名は似合わないんじゃないか？\n");
+                return true;
+            case "アストライアー":
+                System.out.println("\nハハッ、俺の名を知ってるとは光栄だね。\n");
+                return true;
+            case "ラジエル":
+                System.out.println("\nほぅ、よく覚えているものだな。\n");
+                return true;
+            case "バーチュース":
+                System.out.println("\n俺の名を騙ろうとするとは意外だね。\n");
+                return true;
+            case "ガルム":
+                System.out.println("\n名を覚えているのは誉めてやろう\n");
+                return true;
+            case "グリムゲルデ":
+                System.out.println("\n私の名前を騙るとはこの愚か者め\n");
+                return true;
+            case "Star Dies":
+                System.out.println("\n「8101919114514」\n"
+                        + "あなたは最も危険な名前を知った\n");
+                return true;
+            case "オルトランド":
+                System.out.println("\nまだこのゲームをやってくれるのか？\n");
+                return true;
+            case "":
+                System.out.println("\n名前を入力してください\n");
+                return true;
+            case "8101919114514":
+                special810Route = true;
+                return false;              
+            default:
+                return false;
+        }
     }
 
     /**
