@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package thedisaster;
 
 import java.util.Random;
 import static thedisaster.TheDisaster.*;
 
 /**
- *
- * @author C0116168
+ * イージーマス関係のクラス
+ * @author 立野和紀
  */
 public class EasyMass {
 
@@ -76,16 +71,6 @@ public class EasyMass {
     }
     
         public static void hardMass() {
-        System.out.println(""
-                + "※簡単な数学の問題が5問表示されます\n"
-                + "※半角数字で回答を入力してください▼");
-        scan.nextLine();
-
-        System.out.println(""
-                + "※回答を間違えると体力が減少します\n"
-                + "※正解するまで問題が変わることはありません▼");
-        scan.nextLine();
-
         System.out.println("START▼");
 
         Random rand = new Random();//ランダムメソッド
@@ -96,7 +81,7 @@ public class EasyMass {
         char loop = 0;//繰り返し回数保存用
         do {//do/while文で5問繰り返す
             for (int i = 0; i < 2; i++) {//２つの数値を保存
-                int q = rand.nextInt(114514810) + 1141454;
+                int q = rand.nextInt(114514810) + 114514;
                 num[i] = q;
             }
             sisoku = rand.nextInt(3);//ランダムに＋ー×を選択
@@ -125,14 +110,12 @@ public class EasyMass {
                         correct = false;
                     } else {
                         System.out.println("不正解");
-                        Disaster.SetHP(-100);
+                        Disaster.SetHP(-10000);
                     }
                 } catch (Exception e) {
                 }
             }
             loop++;
         } while (loop < 10);
-        System.out.println("セキュリティーチェック完了");
-        System.out.println("HP : " + Disaster.getHP());
     }
 }
